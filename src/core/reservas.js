@@ -1,19 +1,17 @@
 //ALTA CONSULTA
 
 
-
-
-
 function altaReserva(reserva) {
   var errores = validarReserva(reserva);
 
   if (errores.length > 0) {
-    return false;
+    return errores; // devuelvo la lista de errores
   }
 
   guardarReserva(reserva);
-  return true;
+  return []; // sin errores
 }
+
 
 function guardarReserva(reserva) {
   let consultas = JSON.parse(localStorage.getItem("consultas")) || [];
@@ -57,6 +55,31 @@ function validarCamposObligatorios(reserva) {
   if (reserva.email === "") {
     errores.push("El email es obligatorio.");
   }
+
+  if (reserva.tipoAnimal === "") {
+    errores.push("Debe seleccionar un tipo de animal");
+  }
+
+   if (reserva.servicio === "") {
+    errores.push("Debe seleccionar un servicio");
+  }
+
+   if (reserva.profesional === "") {
+    errores.push("Debe seleccionar un profesional");
+  }
+
+   if (reserva.fecha === "") {
+    errores.push("Debe seleccionar una fecha");
+  }
+
+   if (reserva.hora === "") {
+    errores.push("Debe seleccionar una hora");
+  }
+
+   if (reserva.formaDePago === "") {
+    errores.push("Debe seleccionar una forma de pago");
+  }
+
 
   return errores;
 }

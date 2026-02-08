@@ -65,6 +65,37 @@ for (let i = 0; i < profesionales.length; i++) {
 
 //cuando quiera leer la fecha
 //const fecha = document.getElementById("date").value;
+const inputFecha = document.getElementById("fecha");
+
+function formatearFechaYYYYMMDD(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
+// Suma meses “de verdad” (maneja cambios de mes/año)
+function sumarMeses(baseDate, meses) {
+  const d = new Date(baseDate);
+  d.setMonth(d.getMonth() + meses);
+  return d;
+}
+
+function configurarRangoFecha() {
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+
+  const max = sumarMeses(hoy, 2);
+
+  // Si querés permitir desde mañana (no hoy), usá esto:
+  const min = new Date(hoy);
+  min.setDate(min.getDate() + 1);
+
+  inputFecha.min = formatearFechaYYYYMMDD(min);
+  inputFecha.max = formatearFechaYYYYMMDD(max);
+}
+
+configurarRangoFecha();
 
 
 //SELECT HORARIO
