@@ -52,141 +52,108 @@
     </div>
   </section>
 
-  <section id="reservas" class="card">
-    <form class="form" action="#" method="post">
-      <div class="grid">
-        <!-- Columna izquierda -->
-        <div class="panel">
-          <div class="panel__header">
-            <!-- Ícono usuario (SVG) -->
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2.25c-4.35 0-7.875 2.137-7.875 4.775V21h15.75v-1.975c0-2.638-3.525-4.775-7.875-4.775Z" />
-            </svg>
-            <h2 class="panel__title">Datos del Dueño</h2>
+ <section id="reservas" class="card">
+  <form id="formReserva" class="form" action="#" method="post">
+    <div class="grid">
+
+      <!-- Columna izquierda -->
+      <div class="panel">
+        <div class="panel__header">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2.25c-4.35 0-7.875 2.137-7.875 4.775V21h15.75v-1.975c0-2.638-3.525-4.775-7.875-4.775Z"/>
+          </svg>
+          <h2 class="panel__title">Datos del Dueño</h2>
+        </div>
+
+        <div class="field">
+          <label for="txtNombreD">Nombre Completo <span class="req">*</span></label>
+          <input id="txtNombreD" name="txtNombreD" type="text" placeholder="Ej: Juan Pérez" required />
+        </div>
+
+        <div class="field">
+          <label for="txtTel">Teléfono <span class="req">*</span></label>
+          <input id="txtTel" name="txtTel" type="tel" placeholder="099 123 456" required />
+          <small class="hint">Formato: 099 xxx xxx</small>
+        </div>
+
+        <div class="field">
+          <label for="txtEmail">Email <span class="req">*</span></label>
+          <input id="txtEmail" name="txtEmail" type="email" placeholder="usuario@ejemplo.com" required />
+        </div>
+      </div>
+
+      <!-- Columna derecha -->
+      <div class="panel">
+        <div class="panel__header">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.5 12.5c-1.4 0-2.5-1.4-2.5-3s1.1-3 2.5-3S9 7.9 9 9.5s-1.1 3-2.5 3Zm11 0c-1.4 0-2.5-1.4-2.5-3s1.1-3 2.5-3 2.5 1.4 2.5 3-1.1 3-2.5 3ZM9.75 7.25c-1.2 0-2.2-1.2-2.2-2.65S8.55 2 9.75 2s2.2 1.2 2.2 2.6-1 2.65-2.2 2.65Zm4.5 0c-1.2 0-2.2-1.2-2.2-2.65S13.05 2 14.25 2s2.2 1.2 2.2 2.6-1 2.65-2.2 2.65ZM12 22c-3.6 0-6.5-2.2-6.5-4.9 0-1.8 1.2-3.2 3.2-3.9.7-.2 1.5-.2 2.3-.1.3 0 .6.1 1 .1s.7 0 1-.1c.8-.1 1.6-.1 2.3.1 2 .7 3.2 2.1 3.2 3.9C18.5 19.8 15.6 22 12 22Z"/>
+          </svg>
+          <h2 class="panel__title">Datos de la Mascota</h2>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="txtNombreM">Nombre Mascota <span class="req">*</span></label>
+            <input id="txtNombreM" name="txtNombreM" type="text" placeholder="Ej: Bobby" required />
           </div>
 
           <div class="field">
-            <label for="ownerName">Nombre Completo <span class="req">*</span></label>
-            <input id="ownerName" name="ownerName" type="text" placeholder="Ej: Juan Pérez" required />
-          </div>
-
-          <div class="field">
-            <label for="phone">Teléfono <span class="req">*</span></label>
-            <input id="phone" name="phone" type="tel" placeholder="099 123 456" required />
-            <small class="hint">Formato: 099 xxx xxx</small>
-          </div>
-
-          <div class="field">
-            <label for="email">Email <span class="req">*</span></label>
-            <input id="email" name="email" type="email" placeholder="usuario@ejemplo.com" required />
+            <label for="tipoAnimal">Tipo de Animal <span class="req">*</span></label>
+            <select id="tipoAnimal" name="tipoAnimal" required>
+              <option value="" disabled selected>Selecciona tipo de animal</option>
+            </select>
           </div>
         </div>
-    </section>
 
-    <section class="card">
-      <form id="formReserva" class="form" action="#" method="post">
+        <div class="field">
+          <label for="tipoServicio">Servicio <span class="req">*</span></label>
+          <select id="tipoServicio" name="tipoServicio" required>
+            <option value="" disabled selected>Selecciona servicio</option>
+          </select>
+        </div>
 
-        <div class="grid">
-          <!-- Columna izquierda -->
-          <div class="panel">
-            <div class="panel__header">
-              <!-- Ícono usuario (SVG) -->
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2.25c-4.35 0-7.875 2.137-7.875 4.775V21h15.75v-1.975c0-2.638-3.525-4.775-7.875-4.775Z"/>
-              </svg>
-              <h2 class="panel__title">Datos del Dueño</h2>
-            </div>
+        <div class="field">
+          <label for="profesional">Profesional <span class="req">*</span></label>
+          <select id="profesional" name="profesional" required>
+            <option value="" disabled selected>Selecciona profesional</option>
+          </select>
+        </div>
+      </div>
 
-            <div class="field">
-              <label for="txtNombreD">Nombre Completo <span class="req">*</span></label>
-              <input id="txtNombreD" name="txtNombreD" type="text" placeholder="Ej: Juan Pérez" required />
-            </div>
-
-          <div class="row">
-            <div class="field">
-              <label for="txtTel">Teléfono <span class="req">*</span></label>
-              <input id="txtTel" name="phone" type="txtTel" placeholder="099 123 456" required />
-              <small class="hint">Formato: 099 xxx xxx</small>
-            </div>
-
-            <div class="field">
-              <label for="txtEmail">Email <span class="req">*</span></label>
-              <input id="txtEmail" name="txtEmail" type="text" placeholder="usuario@ejemplo.com" required />
-            </div>
+      <!-- Fila inferior (full width) -->
+      <div class="panel panel--full">
+        <div class="row row--bottom">
+          <div class="field">
+            <label for="fecha">Fecha <span class="req">*</span></label>
+            <input id="fecha" name="fecha" type="date" required />
           </div>
 
           <div class="field">
-            <label for="service">Servicio <span class="req">*</span></label>
-            <select id="service" name="service" required>
-              <option value="" disabled selected>Selecciona un servicio</option>
-              <option value="corte-pelo">Corte de Pelo ($1500)</option>
-              <option value="consulta">Consulta Veterinaria ($1200)</option>
-              <option value="vacuna">Vacunación ($900)</option>
+            <label for="hora">Hora <span class="req">*</span></label>
+            <select id="hora" name="hora" required>
+              <option value="" disabled selected>Selecciona hora</option>
             </select>
           </div>
 
-            <div class="row">
-              <div class="field">
-                <label for="txtNombreM">Nombre Mascota <span class="req">*</span></label>
-                <input id="txtNombreM" name="txtNombreM" type="text" placeholder="Ej: Bobby" required />
-              </div>
-
-              <div class="field">
-                <label for="tipoAnimal">Tipo de Animal <span class="req">*</span></label>
-                <select id="tipoAnimal" name="tipoAnimal" required>
-                    <option value="" disabled selected>Selecciona tipo de animal</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="field">
-              <label for="tipoServicio">Servicio <span class="req">*</span></label>
-              <select id="tipoServicio" name="tipoServicio" required>
-              <option value="" disabled selected>Selecciona servicio</option>
-              </select>
-            </div>
-                 
-            <div class="field">
-              <label for="profesional">Profesional <span class="req">*</span></label>
-              <select id="profesional" name="profesional" required>
-                <option value="" disabled selected>Selecciona profesional</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Fila inferior (full width) -->
-          <div class="panel panel--full">
-            <div class="row row--bottom">
-              <div class="field">
-                <label for="fecha">Fecha <span class="req">*</span></label>
-                <input id="fecha" name="fecha" type="date" required />
-              </div>
-
-              <div class="field">
-                <label for="hora">Hora <span class="req">*</span></label>
-                <select id="hora" name="hora" required>
-                  <option value="" disabled selected>Selecciona hora</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="metodoPago">Forma de Pago <span class="req">*</span></label>
-                <select id="metodoPago" name="metodoPago" required>
-                   <option value="" disabled selected>Selecciona método de pago</option>
-                </select>
-              </div>
-            </div>
-
-            <button id="btnAltaConsulta" class="btn" type="button">
-                Confirmar Reserva
-            </button>
-            <p id="mensajeReserva"></p>
-
+          <div class="field">
+            <label for="metodoPago">Forma de Pago <span class="req">*</span></label>
+            <select id="metodoPago" name="metodoPago" required>
+              <option value="" disabled selected>Selecciona método de pago</option>
+            </select>
           </div>
         </div>
-      </form>
-    </section> 
+
+        <button id="btnAltaConsulta" class="btn" type="button">
+          Confirmar Reserva
+        </button>
+
+        <p id="mensajeReserva"></p>
+      </div>
+
+    </div>
+  </form>
+</section>
+
 
 
 
