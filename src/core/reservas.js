@@ -239,3 +239,12 @@ function validarDiaHabil(fecha) {
   return errores;
 }
 
+
+/*************************************************************
+ * LISTADO DE RESERVAS
+ * Devuelve todas las reservas guardadas
+ *************************************************************/
+
+function obtenerReservas() {
+  return JSON.parse(localStorage.getItem("consultas")) || [];
+}
