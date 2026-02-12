@@ -22,19 +22,24 @@
         <li><a href="#reservas" class="btn-nav">Reserva de Turnos</a></li>
         <li id="menu-admin" class="oculto"><a href="#listado-turnos-admin" class="btn-nav">Listado de Turnos</a></li>
 
-        <li class="login-item">
+        <li id="menu-login" class="login-item">
           <a href="#login" class="link-login-img">
             <img src="src/img/login.png" alt="Login" class="login-image">
             <span>Login</span>
           </a>
         </li>
         </li>
+
+        <li id="menu-logout" class="oculto">
+  <a href="#" class="btn-nav" id="btnLogout">Logout</a>
+</li>
+
       </ul>
 
     </nav>
   </header>
 
-  <section id="inicio" class="inicio">
+  <section id="inicio" class="inicio oculto">
     <img src="src/img/portada.jpg" alt="Imagen principal veterinaria" width="1090" height="1080" class="imagen-inicio">
 
     <div class="contenido-inicio">
@@ -52,7 +57,28 @@
     </div>
   </section>
 
- <section id="reservas" class="card">
+<section id="login" class="card">
+  <h2>Ingreso Administrador</h2>
+
+  <div class="field">
+    <label for="txtUser">Usuario</label>
+    <input type="text" id="txtUser">
+  </div>
+
+  <div class="field">
+    <label for="txtPass">Contraseña</label>
+    <input type="password" id="txtPass">
+  </div>
+
+  <button id="btnLogin" class="btn">Ingresar</button>
+
+  <p id="mensajeLogin"></p>
+</section>
+
+
+
+
+ <section id="reservas" class="card oculto">
   <form id="formReserva" class="form" action="#" method="post">
     <div class="grid">
 
@@ -154,7 +180,27 @@
   </form>
 </section>
 
+<section id="listado-turnos-admin" class="card oculto">
+  <h2>Listado de Turnos</h2>
 
+  <table id="tablaReservas">
+    <thead>
+      <tr>
+        <th>Dueño</th>
+        <th>Mascota</th>
+        <th>Animal</th>
+        <th>Servicio</th>
+        <th>Profesional</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Pago</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Se completa desde JS -->
+    </tbody>
+  </table>
+</section>
 
 
 
@@ -169,6 +215,7 @@
 
 
 <script src="src/core/reservas.js"></script>
+<script src="src/core/login.js"></script>
 <script src="src/app.js"></script>
 
 

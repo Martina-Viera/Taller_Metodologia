@@ -530,3 +530,42 @@ select:focus {
   }
 }
 
+/* ==============================
+   TABLA - LISTADO DE TURNOS
+   ============================== */
+
+#tablaReservas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* Encabezados */
+#tablaReservas thead {
+  background-color: #f2f2f2;
+}
+
+#tablaReservas th {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 2px solid #ddd;
+  font-weight: 600;
+}
+
+/* Celdas */
+#tablaReservas td {
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: top;
+}
+
+/* Filas alternadas */
+#tablaReservas tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Hover */
+#tablaReservas tbody tr:hover {
+  background-color: #eef6ff;
+}
