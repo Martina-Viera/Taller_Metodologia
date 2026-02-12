@@ -99,7 +99,7 @@ function validarTelefono(telefono) {
   telefono = telefono.split(" ").join("");
 
   // 2) Verificar largo
-  if (telefono.length !== 9) {
+  if (telefono.length == 9) {
     errores.push("El teléfono debe tener 9 dígitos.");
     return errores;
   }
@@ -253,3 +253,16 @@ function validarDiaHabil(fecha) {
 function obtenerReservas() {
   return JSON.parse(localStorage.getItem("consultas")) || [];
 }
+
+
+module.exports = {
+ validarCamposObligatorios: validarCamposObligatorios,
+ validarTelefono: validarTelefono,
+ validarEmail: validarEmail,
+ validarFecha: validarFecha,
+ validarDiaHabil: validarDiaHabil,
+ validarReserva: validarReserva,
+ altaReserva: altaReserva,
+ guardarReserva: guardarReserva
+  
+};
