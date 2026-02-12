@@ -1,0 +1,24 @@
+{
+  "name": "taller_metodologia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "test": "jest"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Martina-Viera/Taller_Metodologia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Martina-Viera/Taller_Metodologia/issues"
+  },
+  "homepage": "https://github.com/Martina-Viera/Taller_Metodologia#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}

@@ -131,6 +131,7 @@ function manejarAltaReserva() {
     nombreDueno: document.querySelector("#txtNombreD").value.toLowerCase(),
     telefono: document.querySelector("#txtTel").value,
     email: document.querySelector("#txtEmail").value,
+    cedula: document.querySelector("#txtCedula").value,
     nombreMascota: document.querySelector("#txtNombreM").value,
     tipoAnimal: document.querySelector("#tipoAnimal").value,
     servicio: document.querySelector("#tipoServicio").value,
@@ -236,6 +237,7 @@ function mostrarListadoReservas() {
       const fila = document.createElement("tr");
       fila.innerHTML = `
         <td>${r.nombreDueno}</td>
+        <td>${r.cedula}</td>
         <td>${r.nombreMascota}</td>
         <td>${r.tipoAnimal}</td>
         <td>${r.servicio}</td>

@@ -44,6 +44,11 @@ function validarCamposObligatorios(reserva) {
     errores.push("El nombre del dueño es obligatorio.");
   }
 
+  if (reserva.cedula === "") {
+    errores.push("La cédula es obligatoria");
+  }
+
+
   if (reserva.nombreMascota === "") {
     errores.push("El nombre de la mascota es obligatorio.");
   }
