@@ -189,26 +189,38 @@ function mostrarListado() {
 
 
 /*************************************************************
- * NAVBAR
+ * SISTEMA DE NAVEGACIÓN GLOBAL (Nav, Inicio y Footer)
  *************************************************************/
 
-const linksNav = document.querySelectorAll(".menu a");
+// Seleccionamos TODOS los enlaces que apuntan a una sección (Nav, Botón Foto, Footer)
+const todosLosLinks = document.querySelectorAll('a[href^="#"]');
 
-for (let i = 0; i < linksNav.length; i++) {
-  linksNav[i].addEventListener("click", function () {
+for (let i = 0; i < todosLosLinks.length; i++) {
+  todosLosLinks[i].addEventListener("click", function (evento) {
+    // 1. Evitamos el comportamiento por defecto (que no salte la página)
+    evento.preventDefault();
+
     const destino = this.getAttribute("href");
     const estaLogueado = localStorage.getItem("usuarioLogueado");
 
-    // Si no está logueado, solo puede ir al login
-    if (!estaLogueado && destino !== "#login") {
+    // 2. Lógica de acceso
+    if (destino === "#inicio") {
+      mostrarInicio();
+    } 
+    else if (destino === "#reservas") {
+      mostrarReservas(); // Ya no está bloqueado por el login
+    } 
+    else if (destino === "#login") {
       mostrarLogin();
-      return;
+    } 
+    else if (destino === "#listado-turnos-admin") {
+      // Solo el listado pide estar logueado
+      if (estaLogueado) {
+        mostrarListado(); 
+      } else {
+        mostrarLogin();
+      }
     }
-
-    if (destino === "#inicio") mostrarInicio();
-    if (destino === "#reservas") mostrarReservas();
-    if (destino === "#login") mostrarLogin();
-    if (destino === "#listado-turnos-admin") mostrarListadoReservas();
   });
 }
 
@@ -322,3 +334,22 @@ function mostrarHeaderLogueado() {
 
 mostrarHeaderLogin();
 mostrarLogin();
+
+/*************************************************************
+ * MENÚ HAMBURGUESA
+ *************************************************************/
+const hamburger = document.getElementById("hamburger");
+const menu = document.getElementById("menu");
+
+// Abrir/Cerrar menú al hacer clic en las barritas
+hamburger.addEventListener("click", () => {
+  menu.classList.toggle("active");
+});
+
+// CERRAR AUTOMÁTICAMENTE al hacer clic en cualquier enlace
+const menuLinks = document.querySelectorAll(".menu a");
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    menu.classList.remove("active");
+  });
+});

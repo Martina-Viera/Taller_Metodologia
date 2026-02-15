@@ -90,7 +90,7 @@ function validarCamposObligatorios(reserva) {
 }
 
 
-//vALIDACIÓN TELÉFONO
+//VALIDACIÓN TELÉFONO
 
 function validarTelefono(telefono) {
   var errores = [];
@@ -99,7 +99,7 @@ function validarTelefono(telefono) {
   telefono = telefono.split(" ").join("");
 
   // 2) Verificar largo
-  if (telefono.length == 9) {
+  if (telefono.length !== 9) {
     errores.push("El teléfono debe tener 9 dígitos.");
     return errores;
   }
