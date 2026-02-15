@@ -229,7 +229,7 @@ for (let i = 0; i < todosLosLinks.length; i++) {
  * LISTADO DE TURNOS (ADMIN)
  *************************************************************/
 
-function mostrarListadoReservas() {
+function mostrarListado() {
   ocultarPantallas();
 
   const reservas = obtenerReservas();
@@ -239,7 +239,7 @@ function mostrarListadoReservas() {
   if (reservas.length === 0) {
     tbody.innerHTML = `
       <tr>
-        <td colspan="8">No hay reservas registradas</td>
+        <td colspan="9"style="text-align: center;">No hay reservas registradas</td>
       </tr>
     `;
   } else {
@@ -248,15 +248,15 @@ function mostrarListadoReservas() {
 
       const fila = document.createElement("tr");
       fila.innerHTML = `
-        <td>${r.nombreDueno}</td>
-        <td>${r.cedula}</td>
-        <td>${r.nombreMascota}</td>
-        <td>${r.tipoAnimal}</td>
-        <td>${r.servicio}</td>
-        <td>${r.profesional}</td>
-        <td>${r.fecha}</td>
-        <td>${r.hora}</td>
-        <td>${r.formaDePago}</td>
+        <td data-label="Dueño">${r.nombreDueno}</td>
+        <td data-label="Cédula">${r.cedula}</td>
+        <td data-label="Mascota">${r.nombreMascota}</td>
+        <td data-label="Animal">${r.tipoAnimal}</td>
+        <td data-label="Servicio">${r.servicio}</td>
+        <td data-label="Profesional">${r.profesional}</td>
+        <td data-label="Fecha">${r.fecha}</td>
+        <td data-label="Hora">${r.hora}</td>
+        <td data-label="Pago">${r.formaDePago}</td>
       `;
 
       tbody.appendChild(fila);
