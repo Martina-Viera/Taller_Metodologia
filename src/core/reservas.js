@@ -255,14 +255,15 @@ function obtenerReservas() {
 }
 
 
-module.exports = {
- validarCamposObligatorios: validarCamposObligatorios,
- validarTelefono: validarTelefono,
- validarEmail: validarEmail,
- validarFecha: validarFecha,
- validarDiaHabil: validarDiaHabil,
- validarReserva: validarReserva,
- altaReserva: altaReserva,
- guardarReserva: guardarReserva
-  
-};
+if (typeof module !== 'undefined') {
+  module.exports = {
+    validarCamposObligatorios: validarCamposObligatorios,
+    validarTelefono: validarTelefono,
+    validarEmail: validarEmail,
+    validarFecha: validarFecha,
+    validarDiaHabil: validarDiaHabil,
+    validarReserva: validarReserva,
+    altaReserva: altaReserva,
+    guardarReserva: guardarReserva
+  };
+}
