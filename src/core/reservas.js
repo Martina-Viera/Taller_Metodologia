@@ -27,10 +27,11 @@ function validarReserva(reserva) {
   var errores = [];
 
   errores = errores.concat(validarCamposObligatorios(reserva));
+  errores = errores.concat(validarCedula(reserva.cedula));
   errores = errores.concat(validarTelefono(reserva.telefono));
   errores = errores.concat(validarEmail(reserva.email));
   errores = errores.concat(validarFecha(reserva.fecha));
-   errores = errores.concat(validarDiaHabil(reserva.fecha));
+  errores = errores.concat(validarDiaHabil(reserva.fecha));
 
   return errores;
 }
@@ -46,8 +47,7 @@ function validarCamposObligatorios(reserva) {
 
   if (reserva.cedula === "") {
     errores.push("La cédula es obligatoria");
-  }
-
+  } 
 
   if (reserva.nombreMascota === "") {
     errores.push("El nombre de la mascota es obligatorio.");
@@ -65,27 +65,37 @@ function validarCamposObligatorios(reserva) {
     errores.push("Debe seleccionar un tipo de animal");
   }
 
-   if (reserva.servicio === "") {
+  if (reserva.servicio === "") {
     errores.push("Debe seleccionar un servicio");
   }
 
-   if (reserva.profesional === "") {
+  if (reserva.profesional === "") {
     errores.push("Debe seleccionar un profesional");
   }
 
-   if (reserva.fecha === "") {
+  if (reserva.fecha === "") {
     errores.push("Debe seleccionar una fecha");
   }
 
-   if (reserva.hora === "") {
+  if (reserva.hora === "") {
     errores.push("Debe seleccionar una hora");
   }
 
-   if (reserva.formaDePago === "") {
+  if (reserva.formaDePago === "") {
     errores.push("Debe seleccionar una forma de pago");
   }
 
 
+  return errores;
+}
+
+//VALIDACIÓN CÉDULA
+function validarCedula(cedula) {
+  var errores = [];
+
+  if (cedula !== "" && cedula.length !== 8) {
+    errores.push("La cédula debe tener exactamente 8 caracteres.");
+  }
   return errores;
 }
 
@@ -264,6 +274,7 @@ if (typeof module !== 'undefined') {
     validarDiaHabil: validarDiaHabil,
     validarReserva: validarReserva,
     altaReserva: altaReserva,
-    guardarReserva: guardarReserva
+    guardarReserva: guardarReserva,
+    validarCedula: validarCedula,
   };
 }
