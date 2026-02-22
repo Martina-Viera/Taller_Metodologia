@@ -40,6 +40,12 @@ test('Debe dar error si no comienza con 09 (ej. 089...)', function () {
 
 
 // TESTS VALIDAR EMAIL
+
+test('Email sin arroba -> El email debe contener un solo @.', function () {
+  var errores = veterinaria.validarEmail("juan.gmail.com");
+  expect(errores).toEqual(["El email debe contener un solo @."]);
+});
+
 test('email con dos @ -> El email debe contener un solo @.', function () {
   var errores = veterinaria.validarEmail("a@@b.com");
   expect(errores).toEqual(["El email debe contener un solo @."]);
