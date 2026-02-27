@@ -28,3 +28,5 @@ function login(usuario, password) {
 
   return [];
 }
+
+module.exports = { login };
