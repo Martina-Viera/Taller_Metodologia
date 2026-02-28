@@ -1,5 +1,111 @@
 let veterinaria = require('./core/reservas.js');
 
+//SI LA RESERVA TIENE ERRORES NO SE GUARDA
+//Mock de localStorage (necesario para testear alta/guardar/obtener)
+
+beforeEach(() => {
+  let store = {};
+
+  global.localStorage = {
+    getItem: (key) => (store[key] ? store[key] : null),
+    setItem: (key, value) => { store[key] = String(value); },
+    removeItem: (key) => { delete store[key]; },
+    clear: () => { store = {}; }
+  };
+});
+
+ test("si validarReserva devuelve errores, NO guarda la reserva", () => {
+
+    // Reserva inválida (varios campos vacíos)
+    const reservaInvalida = {
+      nombreDueno: "",
+      cedula: "",
+      nombreMascota: "",
+      telefono: "",
+      email: "",
+      tipoAnimal: "",
+      servicio: "",
+      profesional: "",
+      fecha: "",
+      hora: "",
+      formaDePago: ""
+    };
+
+    const errores = veterinaria.altaReserva(reservaInvalida);
+
+    // Debe devolver errores
+    expect(errores.length).toBeGreaterThan(0);
+
+    // No debe haber nada guardado
+    const consultas = JSON.parse(localStorage.getItem("consultas")) || [];
+    expect(consultas.length).toBe(0);
+  });
+
+  //SI LA RESERVA ES VÁLIDA SE GUARDA EN EL LOCALSTORAGE
+  tes("si la reserva es válida, se guarda y devuelve []", () => {
+
+  //fijamos la fecha del sistema porque la función validarFecha depende de la fecha actual:
+  jest.useFakeTimers();
+  jest.setSystemTime(new Date("2026-02-27T12:00:00Z"));
+
+  const reservaValida = {
+    nombreDueno: "Ana",
+    cedula: "47707443",
+    nombreMascota: "Luna",
+    telefono: "099123456",
+    email: "ana@gmail.com",
+    tipoAnimal: "Perro",
+    servicio: "Consulta Veterinaria",
+    profesional: "Patricia Martinez",
+    fecha: "2026-03-10",   // futura y dentro de 2 meses
+    hora: "10:30",
+    formaDePago: "Efectivo"
+  };
+
+  const errores = veterinaria.altaReserva(reservaValida);
+
+  // No debe haber errores
+  expect(errores).toEqual([]);
+
+  // Debe haberse guardado en localStorage
+  const consultas = JSON.parse(localStorage.getItem("consultas")) || [];
+  expect(consultas.length).toBe(1);
+  expect(consultas[0].cedula).toBe("47707443");
+
+  jest.useRealTimers();
+});
+
+//RESERVA CON FECHA PASADA DEVUELVE ERROR 
+
+test("validarFecha: fecha pasada devuelve error", () => {
+
+  jest.useFakeTimers();
+  jest.setSystemTime(new Date("2026-02-27T12:00:00Z")); // fijo fecha de hoy
+
+  const errores = veterinaria.validarFecha("2026-02-20"); // fecha anterior
+
+  expect(errores).toEqual([
+    "La fecha debe ser posterior al día de hoy."
+  ]);
+
+  jest.useRealTimers();
+});
+
+//RESERVA CON FECHA MAYOR A DOS MESES DEVUELVE ERROR
+
+test("validarFecha: fecha mayor a 2 meses devuelve error", () => {
+
+  jest.useFakeTimers();
+  jest.setSystemTime(new Date("2026-02-27T12:00:00Z")); // hoy fijo
+
+  const errores = veterinaria.validarFecha("2026-05-05"); // más de 2 meses
+
+  expect(errores).toEqual([
+    "La fecha no puede superar los dos meses a partir de hoy."
+  ]);
+
+  jest.useRealTimers();
+});
 
 // TESTS VALIDAR TELÉFONO
 
